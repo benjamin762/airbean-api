@@ -1,0 +1,9 @@
+
+
+
+Skapa express typescript projekt:
+https://www.digitalocean.com/community/tutorials/setting-up-a-node-project-with-typescript
+https://blog.logrocket.com/configuring-nodemon-typescript/
+
+https://blog.logrocket.com/express-typescript-node/
+
