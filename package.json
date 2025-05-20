@@ -1,0 +1,27 @@
+{
+  "name": "airbean-api",
+  "version": "1.0.0",
+  "description": "Grupparbete restful api, databas och säkerhet. Ett api till en webbapp där man kan beställa kaffe.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc && node dist/server.js",
+    "dev": "nodemon server.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benjamin762/airbean-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/benjamin762/airbean-api/issues"
+  },
+  "homepage": "https://github.com/benjamin762/airbean-api#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}
