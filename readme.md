@@ -16,3 +16,36 @@ You need to run commands from two places:
 
 cd client && npm install
 cd server && npm install
+
+## Running dev mode
+
+You need to run commands from two places:
+
+### Client:
+cd client && npm run dev
+
+### Server:
+This will only show a static version of the client -- the latest build.
+cd server && npm run dev
+
+
+## Build
+To build the latest Vite for the static dist, accessed from server (e.g. localhost/3000)
+
+cd client && npm run build 
+
+
+
+## Folder structure - To be updated
+
+server/
+├── src/
+│   ├── routes/
+│   │   └── productRoutes.ts        <-- Defines HTTP routes & connects to controller functions
+│   ├── controllers/
+│   │   └── productController.ts    <-- Contains functions handling req/res logic
+│   ├── services/  (or models/, or data-access/)
+│   │   └── productService.ts       <-- Contains DB querying functions
+│   ├── config/
+│   ├── middlewares/
+│   └── ...
