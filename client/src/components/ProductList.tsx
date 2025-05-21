@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { fetchProducts } from '../services/productService';
+import './ProductList.css';
 
 type Product = {
   id: number;
@@ -22,7 +23,7 @@ const ProductList: React.FC = () => {
 
   return (
     <div>
-      <h2>Products</h2>
+      <h2>Menu</h2>
       <ul>
         {products
           .sort((a, b) => a.name.localeCompare(b.name))
