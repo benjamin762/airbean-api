@@ -1,3 +1,4 @@
+// server/src/config/db.ts
 import { Pool } from 'pg';
 import dotenv from 'dotenv';
 
@@ -8,14 +9,11 @@ const pool = new Pool({
   ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
 });
 
-export async function connectDB(): Promise<void> {
-  try {
-    await pool.connect();
-    console.log('✅ Database connected successfully');
-  } catch (error) {
-    console.error('❌ Database connection failed:', error);
-    process.exit(1);
-  }
-}
+// Optional: graceful shutdown
+process.on('SIGINT', async () => {
+  await pool.end();
+  console.log('📦 Database pool has ended');
+  process.exit(0);
+});
 
 export default pool;

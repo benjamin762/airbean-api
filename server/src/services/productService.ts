@@ -8,13 +8,4 @@ export async function fetchAllProducts(): Promise<Product[]> {
   const result = await db.query('SELECT * FROM products');
   return result.rows;
 
-  // For demo, returning static list:
-  /* return [
-    {
-      id: 1,
-      name: 'Airbean',
-      price: 100,
-      description: 'A coffdsfee machine',
-    },
-  ]; */
 }
