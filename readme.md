@@ -8,3 +8,11 @@ Anton Benjamin Rebecca
 [docs/install.md](docs/install.md)
 
 [ER-diagram](https://www.mermaidchart.com/app/projects/8d3bccf7-3223-494f-b65a-4375826aa78f/diagrams/6d6b48bc-fede-4b04-a20c-2878b13a947b/version/v0.1/edit)
+
+
+## Installing
+
+You need to run commands from two places:
+
+cd client && npm install
+cd server && npm install

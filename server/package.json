@@ -2,11 +2,12 @@
   "name": "airbean-api",
   "version": "1.0.0",
   "description": "Grupparbete restful api, databas och säkerhet. Ett api till en webbapp där man kan beställa kaffe.",
+  "type": "commonjs",
   "main": "server.ts",
   "scripts": {
-    "build": "tsc",
-    "start": "node dist/server.js",
-    "dev": "nodemon --watch src --ext ts --exec ts-node src/server.ts",
+    "build": "tsc --build server/tsconfig.json",
+    "start": "node --es-module-specifier-resolution=node dist/index.js",
+    "dev": "nodemon --watch src --ext ts --exec \"ts-node -r tsconfig-paths/register src/server.ts\"",
     "lint": "eslint src/**/*.ts",
     "test": "jest",
     "test:watch": "jest --watch"
@@ -43,6 +44,7 @@
     "prettier": "^3.5.3",
     "ts-jest": "^29.3.4",
     "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.8.3"
   },
   "dependencies": {

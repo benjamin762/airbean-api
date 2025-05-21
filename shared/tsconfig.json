@@ -1,0 +1,15 @@
+// shared/tsconfig.json
+{
+    "compilerOptions": {
+      "composite": true,         // required for project references
+      "declaration": true,       // emit .d.ts files
+      "declarationMap": true,
+      "emitDeclarationOnly": true, // optional: only emit .d.ts, no JS
+      "outDir": "dist",          // so nothing gets written to src/
+      "rootDir": ".",            // make paths relative to shared/
+      "skipLibCheck": true,
+      "strict": true,
+      "esModuleInterop": true
+    },
+    "include": ["**/*.ts"]
+  }
