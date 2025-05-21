@@ -38,7 +38,8 @@ To build the latest Vite for the static dist, accessed from server (e.g. localho
 
 ## Folder structure - To be updated
 
-`server/
+```bash
+server/
 ├── src/
 │   ├── routes/
 │   │   └── productRoutes.ts        <-- Defines HTTP routes & connects to controller functions
@@ -49,4 +50,4 @@ To build the latest Vite for the static dist, accessed from server (e.g. localho
 │   ├── config/
 │   ├── middlewares/
 │   └── ...
-`
+```
