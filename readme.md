@@ -39,15 +39,58 @@ To build the latest Vite for the static dist, accessed from server (e.g. localho
 ## Folder structure - To be updated
 
 ```bash
-server/
-├── src/
-│   ├── routes/
-│   │   └── productRoutes.ts        <-- Defines HTTP routes & connects to controller functions
-│   ├── controllers/
-│   │   └── productController.ts    <-- Contains functions handling req/res logic
-│   ├── services/  (or models/, or data-access/)
-│   │   └── productService.ts       <-- Contains DB querying functions
-│   ├── config/
-│   ├── middlewares/
-│   └── ...
+.
+├── client/                         # Frontend (React + Vite)
+│   ├── eslint.config.js           # ESLint config for frontend linting
+│   ├── index.html                 # Entry HTML file for Vite to mount the app
+│   ├── package-lock.json          # Exact dependency tree for reproducible builds
+│   ├── package.json               # Frontend project metadata and dependencies
+│   ├── public/
+│   │   └── vite.svg               # Static assets available to the browser
+│   ├── README.md                  # Frontend-specific readme or instructions
+│   ├── src/                       # Source code for the frontend
+│   │   ├── App.css                # Styles for the main App component
+│   │   ├── App.tsx                # Main React App component
+│   │   ├── assets/                # Images, fonts, or other static files
+│   │   ├── components/            # Reusable UI components (e.g., buttons, forms)
+│   │   ├── index.css              # Global styles
+│   │   ├── main.tsx               # Entry point for React + rendering
+│   │   ├── services/              # API interaction (e.g., fetch products/orders)
+│   │   └── vite-env.d.ts          # Type definitions for Vite env variables
+│   ├── tsconfig.json              # TypeScript config for the frontend
+│   └── vite.config.ts             # Vite-specific build and dev server config
+
+├── docs/                          # Documentation and setup guides
+│   ├── install.md                 # Installation instructions
+│   └── länkar.txt                 # Saved useful links or resources
+
+├── eslint.config.js              # Global ESLint configuration (maybe shared)
+├── jest.config.js               # Jest testing configuration
+
+├── readme.md                     # Main project readme
+
+├── server/                       # Backend (Node.js + Express + TypeScript)
+│   ├── package-lock.json          # Backend dependency lockfile
+│   ├── package.json               # Backend dependencies and scripts
+│   ├── src/                       # Backend source code
+│   │   ├── app.ts                 # Express app setup (middleware, routes)
+│   │   ├── config/                # Configuration (e.g., database connection)
+│   │   ├── controllers/           # Route handler functions (e.g., business logic)
+│   │   ├── middlewares/          # Custom middleware (e.g., error handling)
+│   │   ├── models/                # Data models or DB schema helpers
+│   │   ├── routes/                # Express route definitions (e.g., /products)
+│   │   ├── server.ts              # Server entry point (listen on port, etc.)
+│   │   └── services/              # Logic for querying the DB or external APIs
+│   └── tsconfig.json              # TypeScript config for backend
+
+├── shared/                       # Shared types/interfaces between front and back
+│   ├── order.ts                   # Type definitions for Order
+│   ├── product.ts                 # Type definitions for Product
+│   └── tsconfig.json              # TypeScript config for shared module
+
+├── tests/                        # Unit and integration tests
+│   └── itemController.test.ts     # Example test for the item controller
+
+└── tsconfig.json                 # Root TypeScript config (may reference others)
+
 ```
