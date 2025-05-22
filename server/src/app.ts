@@ -1,6 +1,7 @@
 // server/src/app.ts
 import express from 'express';
 import path from 'path';
+import cartRoutes from './routes/cartRoutes';
 import itemRoutes from './routes/itemRoutes';
 import productRoutes from './routes/productRoutes';
 import { errorHandler } from './middlewares/errorHandler';
@@ -21,6 +22,7 @@ app.use = ((pathOrHandler: any, ...handlers: any[]) => {
 app.use(express.json());
 
 // Routes
+app.use('/api/cart', cartRoutes);
 app.use('/api/items', itemRoutes);
 app.use('/api/products', productRoutes);
 
