@@ -2,7 +2,7 @@
   "name": "airbean-api",
   "version": "1.0.0",
   "description": "Grupparbete restful api, databas och säkerhet. Ett api till en webbapp där man kan beställa kaffe.",
-  "type": "commonjs",
+  "type": "module",
   "main": "server.ts",
   "scripts": {
     "build": "tsc --build server/tsconfig.json",
@@ -48,6 +48,8 @@
     "typescript": "^5.8.3"
   },
   "dependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/uuid": "^10.0.0",
     "bcrypt": "^6.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
