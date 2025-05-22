@@ -32,7 +32,7 @@ const ProductList: React.FC = () => {
   return (
     <div>
       <h2>Menu</h2>
-      <ul>
+      <ul className='list'>
         {products
           .sort((a, b) => a.name.localeCompare(b.name))
           .map(p => (
