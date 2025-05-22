@@ -32,7 +32,8 @@ function Header() {
         <ul>
           <li><a href="/menu">Menu</a></li>
           <li><a href="/">Home</a></li>
-          <li><a href="#">About</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/orders">My Orders</a></li>
         </ul>
       </nav>
     </header>

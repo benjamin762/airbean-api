@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { fetchOrders } from "../services/orderService";
-import { Order } from "../../../shared/order";
+import { OrderResponse } from "../../../shared/order";
+
 
 export default function OrderList() {
-  const [orders, setOrders] = useState<Order[]>([]);
+  const [orders, setOrders] = useState<OrderResponse[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -23,7 +24,7 @@ export default function OrderList() {
 
   return (
     <div>
-      <h2>Orders</h2>
+      <h2>My Orders</h2>
       <ul>
         {orders.map((order) => {
           const totalOrderPrice = order.items.reduce((acc, item) => acc + item.quantity * item.productPrice, 0);
@@ -36,13 +37,13 @@ export default function OrderList() {
                 <strong>Order ID:</strong> {order.id}
               </p>
               <p>
-                <strong>Status:</strong> {order.status}
+                <strong>Status:</strong> {order.items[0].status}
               </p>
               <p>
-                <strong>Order Date:</strong> {new Date(order.orderDate).toLocaleString()}
+                <strong>Order Date:</strong> {new Date(order.items[0].orderDate).toLocaleString()}
               </p>
 
-            <h4>Items:</h4>
+              <h4>Items:</h4>
               <section style={{ padding: "1rem" }}>
                 <ul>
                   {order.items && order.items.length > 0 ? (
