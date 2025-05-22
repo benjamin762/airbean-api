@@ -5,7 +5,7 @@ import Header from './components/common/Header';
 function App() {
   return (
     <>
-      <Header title="AirBean" />
+      <Header />
       <main className="App">
         <Router>
           <Routes>
