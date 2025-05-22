@@ -9,3 +9,9 @@ export async function fetchAllProducts(): Promise<Product[]> {
   return result.rows;
 
 }
+
+export async function fetchOneProduct(id: number): Promise<Product | null> {
+  // Example using some DB client, e.g. with SQL:
+  const result = await db.query('SELECT * FROM products WHERE id = $1', [id]);
+  return result.rows[0] || null;
+}

@@ -3,7 +3,8 @@ import express from 'express';
 import path from 'path';
 import itemRoutes from './routes/itemRoutes';
 import productRoutes from './routes/productRoutes';
-import { errorHandler } from './middlewares/errorHandler';
+import orderRoutes from './routes/orderRoutes';
+import { errorHandler } from './middleware/errorHandler';
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use(express.json());
 // Routes
 app.use('/api/items', itemRoutes);
 app.use('/api/products', productRoutes);
+app.use('/api/orders', orderRoutes);
 
 // Global error handler (should be after routes)
 app.use(errorHandler);

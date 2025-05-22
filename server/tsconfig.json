@@ -9,7 +9,9 @@
     "strict": true,
     "skipLibCheck": true,
     "noEmit": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "types": ["node"], // Add this
+    "typeRoots": ["./node_modules/@types", "./src/types"]
   },
   "references": [{ "path": "../shared" }],
   "include": ["src"]
