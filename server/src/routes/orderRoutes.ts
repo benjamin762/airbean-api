@@ -7,6 +7,7 @@ import mockAuth from '../middleware/mockAuth';
 const router = Router();
 
 router.post('/new', createOrderHandler);
-router.get('/', mockAuth, getOrders);
+router.get('/my-orders', mockAuth, getOrders); //!currently using harrcoded userID for testing
+router.get('/', getOrders); // get all orders //! for testing
 
 export default router;

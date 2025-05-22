@@ -5,7 +5,7 @@ import { Request, Response, NextFunction } from 'express';
 
 function mockAuth(req: Request, res: Response, next: NextFunction) {
   (req as any).user = {
-    id: 'mock-user-id-1234',
+    id: '1644a5c9-d4d2-4876-b5e0-db631665cfd3',
   };
   next();
 }

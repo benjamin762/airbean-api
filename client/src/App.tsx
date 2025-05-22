@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ProductList from './components/ProductList';
 import Header from './components/common/Header';
+import OrderList from './components/OrderList';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
             <Route path="/menu" element={<ProductList />} />
             {/* Other routes */}
             <Route path="*" element={<h1>404 Not Found</h1>} />
+            <Route path="/orders" element={<OrderList />} />
           </Routes>
         </Router>
       </main>
