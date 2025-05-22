@@ -1,5 +1,5 @@
 // shared/order.ts
-
+import { Product } from "./product";
 // ✅ Used on the frontend and for request bodies
 export interface OrderInput {
     userID: number;
@@ -20,6 +20,9 @@ export interface OrderInput {
     items: OrderItem[];
   }
   
+  // Used for OrderList component
   export interface OrderItem extends OrderItemInput {
     orderID: number;
+    productName: string;
+    productPrice: number;
   }

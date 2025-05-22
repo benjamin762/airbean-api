@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { fetchOrders } from "../services/orderService";
-
-interface Order {
-  id: number;
-}
+import { Order } from "../../../shared/order";
 
 export default function OrderList() {
   const [orders, setOrders] = useState<Order[]>([]);
@@ -28,9 +25,44 @@ export default function OrderList() {
     <div>
       <h2>Orders</h2>
       <ul>
-        {orders.map((order) => (
-          <li key={order.id}>{order.id}</li>
-        ))}
+        {orders.map((order) => {
+          const totalOrderPrice = order.items.reduce((acc, item) => acc + item.quantity * item.productPrice, 0);
+          return (
+            <li
+              key={order.id}
+              style={{ marginBottom: "1rem", border: "1px solid #ccc", padding: "0.5rem" }}
+            >
+              <p>
+                <strong>Order ID:</strong> {order.id}
+              </p>
+              <p>
+                <strong>Status:</strong> {order.status}
+              </p>
+              <p>
+                <strong>Order Date:</strong> {new Date(order.orderDate).toLocaleString()}
+              </p>
+
+            <h4>Items:</h4>
+              <section style={{ padding: "1rem" }}>
+                <ul>
+                  {order.items && order.items.length > 0 ? (
+                    order.items.map((item) => (
+                      <li key={item.productID}>
+                        <strong>{item.productName}</strong> — Quantity: {item.quantity}, Price:{" "}
+                        {item.productPrice.toFixed(2)} SEK
+                      </li>
+                    ))
+                  ) : (
+                    <li>No items found</li>
+                  )}
+                </ul>
+              </section>
+              <p>
+                <strong>Total Order Price:</strong> {totalOrderPrice.toFixed(2)} SEK
+              </p>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

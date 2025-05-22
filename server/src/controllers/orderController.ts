@@ -1,7 +1,7 @@
 // server/src/controllers/orderController.ts
 
 import { Request, Response, NextFunction } from 'express';
-import { createOrder, getOrdersFromDb } from '../services/orderService';
+import { createOrder, fetchOrdersFromDb, fetchOrdersWithItems } from '../services/orderService';
 import { OrderInput } from '../../../shared/order';
 import { fetchOneProduct } from '../services/productService';
 import { Product } from '../../../shared/product';
@@ -52,7 +52,21 @@ export async function getOrders(
 ) {
   try {
     const userId = (req as any).user?.id;
-    const orders = await getOrdersFromDb(userId);
+    const orders = await fetchOrdersFromDb(userId);
+    res.json(orders);
+  } catch (err) {
+    next(err);
+  }
+}
+
+export async function getOrdersWithItems(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    const userId = (req as any).user?.id;
+    const orders = await fetchOrdersWithItems(userId);
     res.json(orders);
   } catch (err) {
     next(err);

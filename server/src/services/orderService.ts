@@ -53,7 +53,7 @@ export async function createOrder(order: OrderInput): Promise<Order> {
   }
 }
 
-export async function getOrdersFromDb(userId?: string): Promise<Order[]> {
+export async function fetchOrdersFromDb(userId?: string): Promise<Order[]> {
     const query = userId
       ? 'SELECT * FROM orders WHERE user_id = $1'
       : 'SELECT * FROM orders';
@@ -62,4 +62,57 @@ export async function getOrdersFromDb(userId?: string): Promise<Order[]> {
   
     const result = await db.query(query, values);
     return result.rows;
+  }
+
+  export async function fetchOrdersWithItems(userId?: string): Promise<Order[]> {
+    const query = userId
+      ? `
+      SELECT 
+        o.*, 
+        json_agg(
+          json_build_object(
+            'productID', oi.product_id,
+            'quantity', oi.quantity,
+            'productName', p.name,
+            'productPrice', p.price
+          )
+        ) AS items
+      FROM orders o
+      LEFT JOIN order_items oi ON o.id = oi.order_id
+      LEFT JOIN products p ON oi.product_id = p.id
+      WHERE o.user_id = $1
+      GROUP BY o.id
+      ORDER BY o.order_date DESC
+    `
+    : `
+      SELECT 
+        o.*, 
+        json_agg(
+          json_build_object(
+            'productID', oi.product_id,
+            'quantity', oi.quantity,
+            'productName', p.name,
+            'productPrice', p.price
+          )
+        ) AS items
+      FROM orders o
+      LEFT JOIN order_items oi ON o.id = oi.order_id
+      LEFT JOIN products p ON oi.product_id = p.id
+      GROUP BY o.id
+      ORDER BY o.order_date DESC
+    `;
+  
+    const values = userId ? [userId] : [];
+  
+    const result = await db.query(query, values);
+  
+    // Convert items JSON from string to array, handle empty items case
+    return result.rows.map(row => ({
+      id: row.id,
+      userID: row.user_id,
+      status: row.status,
+      orderDate: row.order_date,
+      estimatedTimeMinutes: row.estimated_time_minutes,
+      items: row.items[0]?.productID ? row.items : [],  // if no items, json_agg returns [null]
+    }));
   }
